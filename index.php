@@ -1,8 +1,10 @@
 <?php
 
-$version = 7;
-$message = '<h1>Je fais du PHP ' . $version . '</h1>';
-echo $message;
+$resultat = '<ul>';
+for ($i = 1 ; $i <= 100 ; $i++) {
+    $resultat .= '<li>' . $i . '</li>';
+}
 
-// Utilisation des constantes
-define('TVATxPlein', 0.2);
+$resultat .= '</ul>';
+
+echo $resultat;
