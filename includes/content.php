@@ -1,11 +1,16 @@
-<h1>Contenu</h1>
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex et alias, tempore dolorem veniam inventore eius accusamus beatae sequi quibusdam, corporis earum maxime, fugit incidunt voluptatum natus minus! Illum, commodi.
-Mollitia culpa ut at tenetur, officia aut odio. Deleniti, pariatur magni. Deserunt mollitia tempore delectus laudantium sapiente ab amet animi beatae repudiandae aperiam molestias aliquam, exercitationem eaque eos quas quis?
-Molestiae optio aliquam voluptas laboriosam cumque adipisci maxime dignissimos cum ipsa tenetur illo voluptatum obcaecati, sunt autem corporis, delectus quia odit maiores. Veniam eligendi omnis laboriosam qui illo, optio velit!
-Dicta dolorum quia doloribus libero expedita sint laboriosam, totam eius qui tempora fugit deleniti debitis quos minima quae repellat quas asperiores ea veritatis! Suscipit beatae laudantium sequi exercitationem laboriosam provident.
-Vitae voluptate quia impedit ut asperiores ducimus doloribus veritatis mollitia? Laboriosam velit similique unde voluptatum, pariatur voluptatem dolores quis nam, animi nemo necessitatibus dignissimos rem ducimus neque omnis optio consequatur!
-Impedit quisquam sunt nostrum, magni maiores culpa mollitia, recusandae quam sit expedita inventore nesciunt? Vitae ullam illo molestias necessitatibus eaque ea, numquam corrupti nostrum voluptatum velit id sunt aliquam incidunt?
-Necessitatibus fuga temporibus quas perferendis molestias veritatis, provident obcaecati. Temporibus rem optio officia, molestiae totam cumque a hic quia nemo omnis reprehenderit, repudiandae perferendis iste magni eum? Modi, aspernatur ipsam?
-Tempore nemo, distinctio temporibus at sint delectus tenetur? Asperiores earum, ipsum optio, architecto illo voluptatem doloribus fugiat nesciunt dolorem tenetur, debitis quos cum repellendus quas facilis aperiam necessitatibus veniam maxime.
-Cum amet culpa, sed eius voluptate animi autem perferendis quibusdam, vitae consequatur quas laborum voluptas, aliquid iusto! Saepe vel quibusdam sed adipisci iusto aut nemo esse. Consequuntur expedita ea deserunt!
-Aut obcaecati totam corporis consectetur doloremque ex animi aliquam dolore ad, laboriosam enim assumenda dolor ut quia, ipsum quidem voluptate unde reiciendis velit nemo provident impedit a? Commodi, impedit quis?</p>
+<?php
+
+// Récupération des fichiers avec double extension du répertoire /includes
+$content = glob('./includes/*.inc.php');
+
+// Récupération du paramètre d'URL 'page' (superglobale $_GET)
+$page = isset($_GET['page']) ? $_GET['page'] : "";
+
+// Concaténation de la valeur récupérée pour avoir le bon chemin
+$page = './includes/' . $page . '.inc.php';
+
+// On vérifie si la chaîne précédente est présente dans le tableau renvoyé par glob()
+$page = in_array($page, $content) ? $page : './includes/home.inc.php';
+
+// Inclusion de la page
+require $page;
