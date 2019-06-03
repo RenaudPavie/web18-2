@@ -1,2 +1,11 @@
 # web18-1
-Exercices PHP
+## Exercices PHP
+## Jeux(x) de carte
+
+Jeu de bataille (32 ou 54 cartes)
+
+Base de données
+- utilisateurs
+- parties
+- news
+- rôles
