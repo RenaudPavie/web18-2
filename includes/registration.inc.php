@@ -32,7 +32,19 @@ if (isset($_POST['validation'])) {
     }
 
     else {
-        echo "Insertion en BDD";
+        // Préparation de la requête SQL pour compter le nombre d'occurence avec l'adresse mail
+        $checkMail = "SELECT COUNT(*) FROM t_users WHERE  USEMAIL='" . $email . "'";
+        // Exécution de la requête
+        $nombreOccurences = $pdo->query($checkMail)->fetchColumn();
+
+        if ($nombreOccurences == 0 ) {
+            $mdp = password_hash($mdp, PASSWORD_DEFAULT);
+        }
+
+        else {
+            echo "Michel, tu es dans la base";
+        }
+
     }
 }
 
