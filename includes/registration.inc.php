@@ -38,7 +38,24 @@ if (isset($_POST['validation'])) {
         $nombreOccurences = $pdo->query($checkMail)->fetchColumn();
 
         if ($nombreOccurences == 0 ) {
+            // Hashage du mot de passee avec la fonction password_hash
             $mdp = password_hash($mdp, PASSWORD_DEFAULT);
+
+            // str_shuffle mélange les aractères d'une chaîne
+            // date('YmdHis') renvoie 20190603170132
+            // rand() génére un nombre aléatoire
+            $maurice = str_shuffle(date('YmdHis') . $email . rand());
+            // Utilisation de la fonction hash avec l'algorithme de hashage sah512 -> 128 caractères
+            $token = hash('sha512', $maurice);
+
+            $sql = "INSERT INTO t_users
+                (USENOM, USEPRENOM, USEMAIL, USEPWD, USETOKEN, ID_ROLES)
+                VALUES ('" .$nom . "', '" . $prenom ."', '" . $email . "', '" . $mdp ."', '" . $token . "',3)";
+
+            die($sql);
+
+
+
         }
 
         else {
