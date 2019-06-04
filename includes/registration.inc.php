@@ -52,8 +52,33 @@ if (isset($_POST['validation'])) {
                 (USENOM, USEPRENOM, USEMAIL, USEPWD, USETOKEN, ID_ROLES)
                 VALUES ('" .$nom . "', '" . $prenom ."', '" . $email . "', '" . $mdp ."', '" . $token . "',3)";
 
-            die($sql);
+            $query = $pdo->prepare($sql);
+            $query->execute();
 
+
+            /* Envoi de mail
+             *
+             * Installer MailDev (NodeJS impératif)
+             * npm install -g maildev@1.0.0-rc2
+             * Modifier le port dans php.ini (smtp_port 25 à 1025)
+             * Lancer maildev avec la commande : maildev
+             * Dans un navigateur, http://127.0.0.1:1080
+             *
+             */
+
+            $msg = "<h1>Inscription OK</h1>";
+            $msg .= "<p>Vous valider votre inscription, veuillez <a href=\"http://localhost/web18-1/index.php?page=registrationValidation\">ici</a>.</p>";
+            $sujet = "Validation de votre inscription";
+            $headers = 'From: manu@elysee.fr' . "\r\n" .
+                'Reply-To: brigitte@elysee.fr';
+
+            if (mail($email, $sujet, $msg, $headers)) {
+                echo "Inscription OK";
+            }
+
+            else {
+                echo "Morche po";
+            }
 
 
         }
