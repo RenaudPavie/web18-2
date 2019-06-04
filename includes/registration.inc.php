@@ -67,7 +67,7 @@ if (isset($_POST['validation'])) {
              */
 
             $msg = "<h1>Inscription OK</h1>";
-            $msg .= "<p>Vous valider votre inscription, veuillez <a href=\"http://localhost/web18-1/index.php?page=registrationValidation\">ici</a>.</p>";
+            $msg .= "<p>Vous valider votre inscription, veuillez <a href=\"http://localhost/web18-1/index.php?page=registrationValidation&amp;mail=$email&amp;token=$token\">ici</a>.</p>";
             $sujet = "Validation de votre inscription";
             $headers = 'From: manu@elysee.fr' . "\r\n" .
                 'Reply-To: brigitte@elysee.fr';
