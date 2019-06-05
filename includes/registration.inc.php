@@ -38,7 +38,7 @@ if (isset($_POST['validation'])) {
         $nombreOccurences = $pdo->query($checkMail)->fetchColumn();
 
         if ($nombreOccurences == 0 ) {
-            // Hashage du mot de passee avec la fonction password_hash
+            // Hashage du mot de passe avec la fonction password_hash
             $mdp = password_hash($mdp, PASSWORD_DEFAULT);
 
             // str_shuffle mélange les aractères d'une chaîne
