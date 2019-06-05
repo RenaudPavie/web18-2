@@ -35,8 +35,6 @@ if (isset($_POST['login'])) {
                 $_SESSION['login'] = 1;
                 $_SESSION['prenom'] = $result->useprenom;
                 $_SESSION['nom'] = $result->usenom;
-                var_dump($_SESSION);
-                die();
                 echo "<script>document.location.href='http://localhost/web18-1/index.php'</script>";
             }
 
