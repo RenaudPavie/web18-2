@@ -16,8 +16,6 @@ if ($result->rowCount() == 0) {
 
 else {
     $truc = $result->fetchObject();
-    var_dump(strtotime($truc->usedatetime));
-    echo strtotime('now');
 
     $timeRegistration = strtotime($truc->usedatetime);
     $timeNow = strtotime('now');
@@ -25,7 +23,10 @@ else {
     $delta = $timeNow - $timeRegistration;
 
     if ($delta <= 3600) {
-        echo "Yes";
+        $sql = "UPDATE t_users SET USEACTIF=1 WHERE USEMAIL='$mail'";
+        $bidule = $pdo->prepare($sql);
+        $bidule->execute();
+        echo "<p>Votre inscription est maintenant confirmée.</p>";
     }
 
     else {
