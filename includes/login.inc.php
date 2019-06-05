@@ -1,6 +1,6 @@
 <?php
 
-if(isset($_POST['login'])) {
+if (isset($_POST['login'])) {
     $email = isset($_POST['email']) ? $_POST['email'] : "";
     $mdp = isset($_POST['mdp']) ? $_POST['mdp'] : "";
 
@@ -12,7 +12,7 @@ if(isset($_POST['login'])) {
     if (count($erreur) > 0) {
         $msgErreur = "<ul>";
 
-        for ($i = 0 ; $i < count($erreur) ; $i++) {
+        for ($i = 0; $i < count($erreur); $i++) {
             $msgErreur .= "<li>" . $erreur[$i] . "</li>";
         }
 
@@ -20,14 +20,26 @@ if(isset($_POST['login'])) {
 
         echo $msgErreur;
 
-        require_once 'frmRegistration.php';
-    }
+        require_once 'frmLogin.php';
+    } else {
+        $sql = "SELECT * FROM t_users WHERE usemail='$email'";
 
-    else {
-        // Ici, test login/password
-    }
-}
+        $result = $pdo->query($sql)->fetchAll();
 
-else {
+        if (count($result) == 0) {
+            echo "<p>You're not in the database, Michel</p>";
+        } else {
+            $hashDatabase = $pdo->query($sql)->fetchObject()->usepwd;
+            if (password_verify($mdp, $hashDatabase))
+                echo "Welcome Michel";
+
+            else
+                echo "Nan";
+
+            echo "Michel is here";
+
+        }
+    }
+} else {
     require_once "frmLogin.php";
 }
