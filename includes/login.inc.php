@@ -29,15 +29,19 @@ if (isset($_POST['login'])) {
         if (count($result) == 0) {
             echo "<p>You're not in the database, Michel</p>";
         } else {
-            $hashDatabase = $pdo->query($sql)->fetchObject()->usepwd;
-            if (password_verify($mdp, $hashDatabase))
-                echo "Welcome Michel";
+            $result = $pdo->query($sql)->fetchObject();
+            $hashDatabase = $result->usepwd;
+            if (password_verify($mdp, $hashDatabase)) {
+                $_SESSION['login'] = 1;
+                $_SESSION['prenom'] = $result->useprenom;
+                $_SESSION['nom'] = $result->usenom;
+                var_dump($_SESSION);
+                die();
+                echo "<script>document.location.href='http://localhost/web18-1/index.php'</script>";
+            }
 
             else
                 echo "Nan";
-
-            echo "Michel is here";
-
         }
     }
 } else {
