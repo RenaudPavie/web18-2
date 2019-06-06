@@ -1,5 +1,12 @@
 <?php
 
+if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
+    $prenom = $_SESSION['prenom'];
+    $nom = $_SESSION['nom'];
+    echo "<p>Bonjour $prenom $nom</p>";
+}
+
+
 // Récupération des fichiers avec double extension du répertoire /includes
 $content = glob('./includes/*.inc.php');
 
