@@ -1,8 +1,8 @@
 <?php
 
 if (isset($_POST['login'])) {
-    $email = isset($_POST['email']) ? $_POST['email'] : "";
-    $mdp = isset($_POST['mdp']) ? $_POST['mdp'] : "";
+    $email = isset($_POST['email']) ? secureForm($_POST['email']) : "";
+    $mdp = isset($_POST['mdp']) ? secureForm($_POST['mdp']) : "";
 
     $erreur = array();
 
