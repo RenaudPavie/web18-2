@@ -1,5 +1,5 @@
 <?php
-$nom = isset($nom) ? $nom : "";
+$email = isset($email) ? $email : "";
 $pwd = isset($pwd) ? $pwd : "";
 ?>
 <form method="post" action="index.php?page=login">
