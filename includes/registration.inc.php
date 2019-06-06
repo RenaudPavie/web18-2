@@ -2,10 +2,10 @@
 
 if (isset($_POST['validation'])) {
     // Récupération des éléments du formulaire
-    $nom = isset($_POST['nom']) ? $_POST['nom'] : "";
-    $prenom = isset($_POST['prenom']) ? $_POST['prenom'] : "";
-    $email = isset($_POST['email']) ? $_POST['email'] : "";
-    $mdp = isset($_POST['mdp']) ? $_POST['mdp'] : "";
+    $nom = isset($_POST['nom']) ? secureForm($_POST['nom']) : "";
+    $prenom = isset($_POST['prenom']) ? secureForm($_POST['prenom']) : "";
+    $email = isset($_POST['email']) ? secureForm($_POST['email']) : "";
+    $mdp = isset($_POST['mdp']) ? secureForm($_POST['mdp']) : "";
 
     // Initialisation d'un tableau vide
     $erreur = array();
